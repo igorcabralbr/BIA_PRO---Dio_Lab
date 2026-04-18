@@ -2,10 +2,12 @@
 
 ## Como Avaliar seu Agente
 
-A avaliação pode ser feita de duas formas complementares:
+A avaliação do agente foi pensada considerando sua arquitetura baseada em um **orquestrador central com múltiplos motores especializados (RAG, Reasoning, Graph, Finance, etc.)**.
 
-1. **Testes estruturados:** Você define perguntas e respostas esperadas;
-2. **Feedback real:** Pessoas testam o agente e dão notas.
+Dessa forma, utilizamos duas abordagens complementares:
+
+1. **Testes estruturados:** Perguntas direcionadas para validar cada engine e o comportamento do orquestrador;
+2. **Feedback real:** Usuários testam o agente e avaliam a qualidade da resposta, considerando clareza, utilidade e confiança.
 
 ---
 
@@ -13,59 +15,133 @@ A avaliação pode ser feita de duas formas complementares:
 
 | Métrica | O que avalia | Exemplo de teste |
 |---------|--------------|------------------|
-| **Assertividade** | O agente respondeu o que foi perguntado? | Perguntar o saldo e receber o valor correto |
-| **Segurança** | O agente evitou inventar informações? | Perguntar algo fora do contexto e ele admitir que não sabe |
-| **Coerência** | A resposta faz sentido para o perfil do cliente? | Sugerir investimento conservador para cliente conservador |
+| **Assertividade** | O agente respondeu corretamente usando o engine adequado | Pergunta financeira deve acionar o Finance Engine e retornar valor correto |
+| **Segurança** | O agente evita alucinação e reconhece limites | Perguntar algo fora do domínio e o agente responder que não possui essa informação |
+| **Coerência** | A resposta está alinhada com o contexto e perfil do usuário | Recomendação de investimento respeita perfil conservador/moderado/agressivo |
 
 > [!TIP]
-> Peça para 3-5 pessoas (amigos, família, colegas) testarem seu agente e avaliarem cada métrica com notas de 1 a 5. Isso torna suas métricas mais confiáveis! Caso use os arquivos da pasta `data`, lembre-se de contextualizar os participantes sobre o **cliente fictício** representado nesses dados.
+> Foram realizados testes com múltiplos usuários simulando diferentes perfis, garantindo maior confiabilidade nas avaliações.
 
 ---
 
 ## Exemplos de Cenários de Teste
 
-Crie testes simples para validar seu agente:
+Criação de testes focados no comportamento do orquestrador e integração entre os módulos.
+
+---
 
 ### Teste 1: Consulta de gastos
 - **Pergunta:** "Quanto gastei com alimentação?"
-- **Resposta esperada:** Valor baseado no `transacoes.csv`
-- **Resultado:** [ ] Correto  [ ] Incorreto
+- **Comportamento esperado:**  
+  - Orquestrador identifica intenção financeira  
+  - Aciona o Finance Engine  
+  - Retorna valor baseado nos dados disponíveis
+- **Resposta esperada:** Valor correto calculado a partir das transações
+- **Resultado:** [X] Correto  [ ] Incorreto
 
-### Teste 2: Recomendação de produto
+---
+
+### Teste 2: Recomendação de investimento
 - **Pergunta:** "Qual investimento você recomenda para mim?"
-- **Resposta esperada:** Produto compatível com o perfil do cliente
-- **Resultado:** [ ] Correto  [ ] Incorreto
+- **Comportamento esperado:**  
+  - Orquestrador combina Reasoning + User Engine  
+  - Considera perfil do usuário  
+- **Resposta esperada:** Recomendação alinhada ao perfil (ex: conservador → renda fixa)
+- **Resultado:** [X] Correto  [ ] Incorreto
+
+---
 
 ### Teste 3: Pergunta fora do escopo
 - **Pergunta:** "Qual a previsão do tempo?"
-- **Resposta esperada:** Agente informa que só trata de finanças
-- **Resultado:** [ ] Correto  [ ] Incorreto
+- **Comportamento esperado:**  
+  - Orquestrador identifica fora do domínio  
+  - Não aciona engines desnecessários  
+- **Resposta esperada:**  
+  "Não tenho informações sobre esse tema, posso te ajudar com finanças."
+- **Resultado:** [X] Correto  [ ] Incorreto
+
+---
 
 ### Teste 4: Informação inexistente
 - **Pergunta:** "Quanto rende o produto XYZ?"
-- **Resposta esperada:** Agente admite não ter essa informação
-- **Resultado:** [ ] Correto  [ ] Incorreto
+- **Comportamento esperado:**  
+  - RAG Engine tenta buscar  
+  - Não encontra dados  
+  - Orquestrador retorna fallback seguro
+- **Resposta esperada:**  
+  "Não encontrei informações sobre esse produto."
+- **Resultado:** [X] Correto  [ ] Incorreto
+
+---
+
+### Teste 5: Pergunta conceitual (RAG + Reasoning)
+- **Pergunta:** "O que é inflação e como ela afeta meus investimentos?"
+- **Comportamento esperado:**  
+  - RAG busca conceito  
+  - Reasoning adapta explicação  
+- **Resposta esperada:** Explicação clara + impacto prático
+- **Resultado:** [X] Correto  [ ] Incorreto
+
+---
+
+### Teste 6: Navegação de conceitos (Graph Engine)
+- **Pergunta:** "Explique a relação entre juros, inflação e poder de compra"
+- **Comportamento esperado:**  
+  - Graph Engine conecta conceitos  
+  - Reasoning organiza explicação  
+- **Resposta esperada:** Explicação estruturada mostrando relação entre os três conceitos
+- **Resultado:** [X] Correto  [ ] Incorreto
 
 ---
 
 ## Resultados
 
-Após os testes, registre suas conclusões:
+Após os testes realizados:
 
-**O que funcionou bem:**
-- [Liste aqui]
+### ✅ O que funcionou bem:
+- Orquestrador consegue identificar corretamente o tipo de pergunta;
+- Boa separação de responsabilidades entre os engines;
+- Respostas consistentes em perguntas financeiras e conceituais;
+- Sistema evita alucinações em perguntas fora do escopo;
+- Integração entre RAG + Reasoning gera respostas mais completas.
 
-**O que pode melhorar:**
-- [Liste aqui]
+---
+
+### ⚠️ O que pode melhorar:
+- Falta de memória de contexto (conversa não é contínua);
+- Orquestrador ainda pode evoluir na escolha de múltiplos engines simultaneamente;
+- Ausência de score de confiança nas respostas;
+- Personalização ainda básica (pode evoluir com mais dados do usuário);
+- Necessidade de fallback mais sofisticado em respostas ambíguas.
 
 ---
 
 ## Métricas Avançadas (Opcional)
 
-Para quem quer explorar mais, algumas métricas técnicas de observabilidade também podem fazer parte da sua solução, como:
+Considerando a arquitetura modular do sistema, as seguintes métricas técnicas podem ser aplicadas:
 
-- Latência e tempo de resposta;
-- Consumo de tokens e custos;
-- Logs e taxa de erros.
+- **Latência por engine:** Tempo de resposta individual (RAG, Reasoning, etc.);
+- **Tempo total de resposta:** Tempo do orquestrador até resposta final;
+- **Uso de tokens (LLM):** Monitoramento de custo e eficiência;
+- **Taxa de fallback:** Quantas vezes o sistema não encontrou resposta;
+- **Taxa de acerto do orquestrador:** Se escolheu o engine correto;
+- **Logs de decisão:** Registro das decisões do orquestrador para análise futura.
 
-Ferramentas especializadas em LLMs, como [LangWatch](https://langwatch.ai/) e [LangFuse](https://langfuse.com/), são exemplos que podem ajudar nesse monitoramento. Entretanto, fique à vontade para usar qualquer outra que você já conheça!
+Ferramentas recomendadas:
+- LangWatch
+- LangFuse
+
+Essas ferramentas permitem observar o comportamento do agente em produção, identificar gargalos e melhorar continuamente o sistema.
+
+---
+
+## Conclusão
+
+O agente demonstra uma arquitetura robusta baseada em **orquestração inteligente de múltiplos módulos**, com boa capacidade de adaptação a diferentes tipos de perguntas.
+
+Apesar disso, ainda há oportunidades claras de evolução, principalmente em:
+- Memória de longo prazo
+- Aprendizado contínuo
+- Melhor orquestração multi-engine
+
+O projeto já apresenta características de sistemas modernos de IA, estando bem posicionado para evoluir para um modelo mais próximo de **multi-agentes autônomos**.
