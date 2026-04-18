@@ -9,7 +9,7 @@ O projeto utiliza uma base de conhecimento estruturada em arquivos JSON para sim
 | `concepts.json`                | JSON    | Armazena conceitos financeiros (ex: juros compostos, inflação) utilizados pelo Graph Engine para navegação semântica |
 | `relations.json`               | JSON    | Define relações entre conceitos (grafo), permitindo explicações encadeadas e aprendizado progressivo                 |
 | `quizzes.json`                 | JSON    | Contém perguntas e respostas para o Quiz Engine, permitindo validação de conhecimento do usuário                     |
-| (futuro) `user_profile.json`   | JSON    | Armazena preferências e nível do usuário para personalização das respostas                                           |
+| `user_profile.json`            | JSON    | Armazena preferências e nível do usuário para personalização das respostas                                           |
 | (futuro) `financial_data.json` | JSON    | Simula dados financeiros para cálculos e análises no Finance Engine                                                  |
 
 > [!TIP]
