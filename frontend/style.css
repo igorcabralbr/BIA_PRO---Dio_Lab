@@ -1,0 +1,437 @@
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #0f172a;
+  color: white;
+}
+
+/* LIGHT MODE */
+.light {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.light .sidebar,
+.light .card,
+.light .bot {
+  background: rgba(0,0,0,0.05);
+}
+
+/* BACKGROUND */
+.bg-animation {
+  position: fixed;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, #1e293b 10%, transparent 10%);
+  background-size: 40px 40px;
+  animation: moveBg 20s linear infinite;
+  z-index: -1;
+}
+
+@keyframes moveBg {
+  from { transform: translate(0,0); }
+  to { transform: translate(-200px,-200px); }
+}
+
+/* =========================
+   LAYOUT PRINCIPAL
+========================= */
+.app {
+  display: flex;
+  height: 100vh;
+}
+
+/*  NOVO: suporte ao layout React-like (caso use app-container) */
+.app-container {
+  display: flex;
+  height: 100vh;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+.sidebar {
+  width: 280px;
+  padding: 20px;
+  backdrop-filter: blur(20px);
+  background: rgba(255,255,255,0.05);
+  border-right: 1px solid rgba(255,255,255,0.1);
+  transition: 0.3s;
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  overflow-y: auto;
+}
+
+.sidebar.collapsed {
+  width: 80px;
+}
+
+.logo {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+/*  HEADER */
+.sidebar-header {
+  font-size: 13px;
+  font-weight: 600;
+  color: #38bdf8;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+
+/* =========================
+   LOGO BIA PRO (RED VERSION)
+========================= */
+.logo {
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* TEXTO PRINCIPAL */
+.logo-main {
+    font-size: 26px; /* 🔥 maior */
+    font-weight: 800;
+    letter-spacing: 1px;
+
+    /* vermelho agradável (não agressivo) */
+    background: linear-gradient(135deg, #ef4444, #b91c1c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    /* glow suave */
+    text-shadow: 0 0 12px rgba(239, 68, 68, 0.35);
+	
+	animation: pulseGlow 2.5s infinite alternate;
+}
+
+@keyframes pulseGlow {
+    from { text-shadow: 0 0 6px rgba(239, 68, 68, 0.2); }
+    to   { text-shadow: 0 0 18px rgba(239, 68, 68, 0.6); }
+}
+
+/* SUBTEXTO */
+.logo-subtitle {
+    font-size: 11px;
+    margin-top: 4px;
+    color: #94a3b8; /* cinza elegante */
+    letter-spacing: 0.5px;
+}
+
+
+/* =========================
+   PROFILE + INSIGHTS BOX
+========================= */
+.profile-box,
+.insights-box {
+  background: rgba(255,255,255,0.05);
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: all 0.2s ease;
+}
+
+/*  Hover suave estilo SaaS */
+.profile-box:hover,
+.insights-box:hover {
+  transform: translateY(-2px);
+  border-color: rgba(56,189,248,0.3);
+}
+
+/* =========================
+   INSIGHTS BOX (REFINADO)
+========================= */
+.insights-box {
+  font-size: 12px;
+  color: #cbd5e1;
+
+  /*  COMPACTAÇÃO REAL */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* =========================
+   CARD INTERNO
+========================= */
+.insight-card {
+  background: rgba(255,255,255,0.03);
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.06);
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* =========================
+   LINHAS DO INSIGHT ( NÍVEL 2)
+========================= */
+.insight-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+
+  font-size: 12px;
+}
+
+/* label (lado esquerdo) */
+.insight-label {
+  opacity: 0.7;
+}
+
+/* valor (lado direito) */
+.insight-value {
+  font-weight: 600;
+  color: white;
+}
+
+/* =========================
+   METAS ( NÍVEL 2)
+========================= */
+.insight-meta {
+  font-size: 11px;
+  opacity: 0.8;
+}
+
+/* =========================
+   PROGRESS BAR ( NÍVEL 3)
+========================= */
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #38bdf8, #3b82f6);
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+/* =========================
+   STATUS COLORS ( NÍVEL 3)
+========================= */
+.status-ok {
+  color: #22c55e;
+}
+
+.status-warning {
+  color: #f59e0b;
+}
+
+.status-bad {
+  color: #ef4444;
+}
+
+/* =========================
+   CARDS
+========================= */
+.card {
+  background: rgba(255,255,255,0.05);
+  padding: 15px;
+  border-radius: 16px;
+  margin-bottom: 15px;
+}
+
+.card button, select {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: #334155;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.card button:hover {
+  background: #3b82f6;
+}
+
+.collapse-btn {
+  margin-top: 20px;
+}
+
+/* =========================
+   MAIN
+========================= */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER */
+.header {
+  padding: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* =========================
+   CHAT
+========================= */
+.chat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.messages {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.chat-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0; /*  ESSENCIAL */
+}
+
+.chat-container {
+  flex: 1;
+  min-height: 0;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+
+
+/* =========================
+   MESSAGES
+========================= */
+.message {
+  max-width: 70%;
+  padding: 14px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  animation: fadeIn 0.3s ease;
+  line-height: 1.6;
+}
+
+.user {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  align-self: flex-end;
+}
+
+.bot {
+  background: rgba(255,255,255,0.05);
+  align-self: flex-start;
+}
+
+
+/* =========================
+   quiz
+========================= */
+.quiz-option {
+  width: 100%;
+  margin-top: 8px;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: #334155;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.quiz-option:hover {
+  background: #3b82f6;
+}
+
+
+/* =========================
+   INPUT
+========================= */
+.input-area {
+  display: flex;
+  padding: 20px;
+  gap: 10px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.input-area input {
+  flex: 1;
+  padding: 16px;
+  border-radius: 16px;
+  border: none;
+  font-size: 15px;
+  background: rgba(255,255,255,0.05);
+  color: white;
+  outline: none;
+}
+
+.input-area button {
+  padding: 14px 18px;
+  border-radius: 14px;
+  border: none;
+  background: #3b82f6;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.input-area button:hover {
+  transform: scale(1.05);
+}
+
+/* =========================
+   UTILS
+========================= */
+.hidden {
+  display: none;
+}
+
+/* =========================
+   ANIMATION
+========================= */
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(10px);}
+  to {opacity: 1;}
+}
+
+/* =========================
+   PROFILE HIGHLIGHT (NOVO)
+========================= */
+.profile-box b {
+  color: #38bdf8;
+}
+
+
+
+/* =========================
+   SCROLLBAR
+========================= */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 10px;
+}
