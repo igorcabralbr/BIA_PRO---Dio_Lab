@@ -1,9 +1,17 @@
 
-# 🧠 Financial Brain – Intelligent Financial Education Agent
+# 🧠 BIA PRO
 
-Projeto desenvolvido para o desafio de IA aplicada a finanças.
+## The Financial Brain that Thinks With You
 
-O **Financial Brain** é um agente inteligente de educação financeira que combina:
+> Um agente de IA que não apenas responde…
+> **ele raciocina, ensina e evolui com o usuário.**
+
+---
+
+
+Projeto desenvolvido para o desafio DIO-Bradesco de IA aplicada a finanças.
+
+O **Bia PRO** é um agente inteligente de educação financeira que combina:
 
 * **grafo de conhecimento financeiro**
 * **IA conversacional**
@@ -18,7 +26,7 @@ O objetivo do projeto é criar um **assistente financeiro educativo capaz de exp
 
 # 🚀 Diferencial do Projeto
 
-O maior diferencial do projeto é o **Financial Brain**, um grande **grafo de conhecimento financeiro estruturado**.
+O maior diferencial do projeto é o **BIA Brain**, um grande **grafo de conhecimento financeiro estruturado**.
 
 Esse cérebro financeiro contém aproximadamente:
 
@@ -94,7 +102,7 @@ Usuários podem:
 
 # 🧩 Funcionalidades
 
-## 🧠 Financial Brain (Knowledge Graph)
+## 🧠 BIA Brain (Knowledge Graph)
 
 O núcleo do sistema é o **Financial Brain**, um grafo de conhecimento financeiro com:
 
@@ -254,6 +262,7 @@ Outros componentes:
 
 ```text
 financial-brain/
+
 │
 ├── data/
 │   ├── concepts.json
