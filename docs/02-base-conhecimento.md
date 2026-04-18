@@ -2,54 +2,103 @@
 
 ## Dados Utilizados
 
-Descreva se usou os arquivos da pasta `data`, por exemplo:
+O projeto utiliza uma base de conhecimento estruturada em arquivos JSON para simular um ambiente de aprendizado financeiro inteligente, com suporte a raciocínio, navegação conceitual e personalização.
 
-| Arquivo | Formato | Utilização no Agente |
-|---------|---------|---------------------|
-| `historico_atendimento.csv` | CSV | Contextualizar interações anteriores |
-| `perfil_investidor.json` | JSON | Personalizar recomendações |
-| `produtos_financeiros.json` | JSON | Sugerir produtos adequados ao perfil |
-| `transacoes.csv` | CSV | Analisar padrão de gastos do cliente |
+| Arquivo                        | Formato | Utilização no Agente                                                                                                 |
+| ------------------------------ | ------- | -------------------------------------------------------------------------------------------------------------------- |
+| `concepts.json`                | JSON    | Armazena conceitos financeiros (ex: juros compostos, inflação) utilizados pelo Graph Engine para navegação semântica |
+| `relations.json`               | JSON    | Define relações entre conceitos (grafo), permitindo explicações encadeadas e aprendizado progressivo                 |
+| `quizzes.json`                 | JSON    | Contém perguntas e respostas para o Quiz Engine, permitindo validação de conhecimento do usuário                     |
+| (futuro) `user_profile.json`   | JSON    | Armazena preferências e nível do usuário para personalização das respostas                                           |
+| (futuro) `financial_data.json` | JSON    | Simula dados financeiros para cálculos e análises no Finance Engine                                                  |
 
 > [!TIP]
-> **Quer um dataset mais robusto?** Você pode utilizar datasets públicos do [Hugging Face](https://huggingface.co/datasets) relacionados a finanças, desde que sejam adequados ao contexto do desafio.
+> **Quer um dataset mais robusto?** O projeto pode ser facilmente expandido para utilizar datasets reais do Hugging Face ou APIs financeiras, integrando-os ao RAG Engine para respostas mais precisas.
 
 ---
 
 ## Adaptações nos Dados
 
-> Você modificou ou expandiu os dados mockados? Descreva aqui.
+Os dados mockados foram estruturados para simular um **grafo de conhecimento financeiro**, permitindo:
 
-[Sua descrição aqui]
+* Navegação entre conceitos relacionados (ex: juros → inflação → poder de compra)
+* Explicações progressivas (nível iniciante até avançado)
+* Base para raciocínio híbrido (Graph + Reasoning Engine)
+
+Além disso:
+
+* Os conceitos foram simplificados para facilitar explicações didáticas
+* As relações foram organizadas para suportar traversal (busca em profundidade/largura)
+* Os quizzes foram pensados como extensão do aprendizado (modo mentor)
 
 ---
 
 ## Estratégia de Integração
 
 ### Como os dados são carregados?
-> Descreva como seu agente acessa a base de conhecimento.
 
-[ex: Os JSON/CSV são carregados no início da sessão e incluídos no contexto do prompt]
+Os arquivos JSON são carregados no início da execução do sistema pelos respectivos engines:
+
+* `graph_engine.py` → carrega `concepts.json` e `relations.json`
+* `quiz_engine.py` → carrega `quizzes.json`
+* `rag_engine.py` → pode carregar documentos ou embeddings (simulado atualmente)
+
+O carregamento ocorre em memória, permitindo acesso rápido durante a execução do orquestrador.
+
+---
 
 ### Como os dados são usados no prompt?
-> Os dados vão no system prompt? São consultados dinamicamente?
 
-[Sua descrição aqui]
+Os dados **não são inseridos diretamente no system prompt de forma estática**.
+
+Em vez disso, o sistema utiliza uma abordagem dinâmica:
+
+1. O **Brain Orchestrator** interpreta a intenção do usuário
+2. Seleciona o(s) engine(s) adequado(s)
+3. Cada engine consulta os dados relevantes
+4. O resultado é retornado e **injetado no contexto da resposta**
+
+Exemplos:
+
+* Graph Engine → retorna explicações baseadas no grafo
+* RAG Engine → recupera contexto relevante
+* Quiz Engine → gera perguntas baseadas no progresso
+
+👉 Isso evita prompts grandes e melhora eficiência e precisão
 
 ---
 
 ## Exemplo de Contexto Montado
 
-> Mostre um exemplo de como os dados são formatados para o agente.
+Abaixo um exemplo de como o contexto pode ser estruturado internamente antes de gerar a resposta final:
 
 ```
-Dados do Cliente:
-- Nome: João Silva
-- Perfil: Moderado
-- Saldo disponível: R$ 5.000
+Contexto de Conhecimento:
 
-Últimas transações:
-- 01/11: Supermercado - R$ 450
-- 03/11: Streaming - R$ 55
-...
+Conceito atual: Juros Compostos
+Descrição: Juros sobre juros acumulados ao longo do tempo
+
+Relações:
+- Relacionado a: Inflação
+- Impacta: Poder de compra
+- Usado em: Investimentos
+
+Nível do usuário: Iniciante
+
+Modo ativo: Mentor Inteligente
+
+Resposta esperada:
+- Explicação simples
+- Exemplo prático
+- Possível pergunta para reforço
 ```
+
+---
+
+Esse formato permite que o sistema funcione como um **mentor adaptativo**, combinando:
+
+* Recuperação de conhecimento (RAG)
+* Navegação em grafo (Graph Engine)
+* Raciocínio (Reasoning Engine)
+* Personalização (User Engine)
+* Ensino ativo (Quiz Engine)
