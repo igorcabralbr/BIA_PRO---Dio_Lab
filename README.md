@@ -1,5 +1,5 @@
 
-# 🧠 BIA PRO
+# BIA PRO
 
 ## The Financial Brain that Thinks With You
 
