@@ -304,7 +304,7 @@ pip install -r requirements.txt
 Execute a API:
 
 ```bash
-uvicorn api.main:app --reload
+uvicorn main:app --reload
 ```
 
 Acesse a documentação da API:
