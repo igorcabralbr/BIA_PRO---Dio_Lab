@@ -261,27 +261,41 @@ Outros componentes:
 # 📊 Estrutura do Projeto
 
 ```text
-financial-brain/
-
+BIA_PRO/
 │
 ├── data/
 │   ├── concepts.json
 │   ├── relations.json
-│   └── quizzes.json
+│	├── quizzes.json
+│   └── users.json
 │
 ├── core/
+│   ├── brain_orchestrator.py
+│   ├── accessibility_engine.py
+│   ├── finance_engine.py
 │   ├── graph_engine.py
-│   ├── reasoning_engine.py
-│   ├── rag_engine.py
+│   ├── llm_engine.py
 │   ├── quiz_engine.py
-│   └── finance_engine.py
+│   ├── rag_engine.py
+│   ├── reasoning_engine.py
+│   └── user_engine.py
 │
-├── api/
-│   └── main.py
+├── frontend/
+│   ├── index.html
+│   ├── app.js
+│   ├── chart.js
+│   ├── style.css
+│   └── utils.js
 │
-├── visual/
-│   └── visual_financial_brain.py
+├── routes/
+│   └── ask.py
+│   
+├── useful/ (old content)
+│   ├── old_routes (folder)
+│   └── old_engines (folder)
 │
+├── main.py
+├── LICENSE
 └── README.md
 ```
 
