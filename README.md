@@ -246,10 +246,17 @@ Outros componentes:
 ```text
 BIA_PRO/
 │
+├── docs/
+│   ├── 01-documentacao-agente.md
+│   ├── 02-base-conhecimento.md
+│	 ├── 03-prompts.md
+│	 ├── 04-metricas.md
+│   └── 05-pitch.md
+│
 ├── data/
 │   ├── concepts.json
 │   ├── relations.json
-│	├── quizzes.json
+│	 ├── quizzes.json
 │   └── users.json
 │
 ├── core/
