@@ -211,26 +211,9 @@ O objetivo é tornar a educação financeira **mais acessível para todos**.
 
 # 🏗 Arquitetura do Sistema
 
-```mermaid
-flowchart TD
-    A[Usuário] --> B[Interface Web / Chat]
-    B --> C[LLM]
-    C --> D[Financial Brain API]
-
-    D --> E[Financial Brain Graph]
-    D --> F[Education RAG]
-    D --> G[Quiz & Gamification Engine]
-    D --> H[User Finance Analyzer]
-
-    E --> D
-    F --> D
-    G --> D
-    H --> D
-
-    D --> C
-    C --> I[Validação]
-    I --> J[Resposta ao Usuário]
-```
+<p align="center">
+  <img src="assets/mermaid.png" width="800"/>
+</p>
 
 ---
 
