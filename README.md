@@ -1,149 +1,338 @@
-# 🤖 Agente Financeiro Inteligente com IA Generativa
 
-## Contexto
+# 🧠 Financial Brain – Intelligent Financial Education Agent
 
-Os assistentes virtuais no setor financeiro estão evoluindo de simples chatbots reativos para **agentes inteligentes e proativos**. Neste desafio, você vai idealizar e prototipar um agente financeiro que utiliza IA Generativa para:
+Projeto desenvolvido para o desafio de IA aplicada a finanças.
 
-- **Antecipar necessidades** ao invés de apenas responder perguntas
-- **Personalizar** sugestões com base no contexto de cada cliente
-- **Cocriar soluções** financeiras de forma consultiva
-- **Garantir segurança** e confiabilidade nas respostas (anti-alucinação)
+O **Financial Brain** é um agente inteligente de educação financeira que combina:
 
-> [!TIP]
-> Na pasta [`examples/`](./examples/) você encontra referências de implementação para cada etapa deste desafio.
+* **grafo de conhecimento financeiro**
+* **IA conversacional**
+* **educação financeira personalizada**
+* **análise de hábitos financeiros**
+* **gamificação e quizzes**
+* **acessibilidade digital**
 
----
-
-## O Que Você Deve Entregar
-
-### 1. Documentação do Agente
-
-Defina **o que** seu agente faz e **como** ele funciona:
-
-- **Caso de Uso:** Qual problema financeiro ele resolve? (ex: consultoria de investimentos, planejamento de metas, alertas de gastos)
-- **Persona e Tom de Voz:** Como o agente se comporta e se comunica?
-- **Arquitetura:** Fluxo de dados e integração com a base de conhecimento
-- **Segurança:** Como evitar alucinações e garantir respostas confiáveis?
-
-📄 **Template:** [`docs/01-documentacao-agente.md`](./docs/01-documentacao-agente.md)
+O objetivo do projeto é criar um **assistente financeiro educativo capaz de explicar conceitos econômicos, ajudar usuários a entender suas finanças e promover educação financeira de forma inclusiva e interativa.**
 
 ---
 
-### 2. Base de Conhecimento
+# 🚀 Diferencial do Projeto
 
-Utilize os **dados mockados** disponíveis na pasta [`data/`](./data/) para alimentar seu agente:
+O maior diferencial do projeto é o **Financial Brain**, um grande **grafo de conhecimento financeiro estruturado**.
 
-| Arquivo | Formato | Descrição |
-|---------|---------|-----------|
-| `transacoes.csv` | CSV | Histórico de transações do cliente |
-| `historico_atendimento.csv` | CSV | Histórico de atendimentos anteriores |
-| `perfil_investidor.json` | JSON | Perfil e preferências do cliente |
-| `produtos_financeiros.json` | JSON | Produtos e serviços disponíveis |
+Esse cérebro financeiro contém aproximadamente:
 
-Você pode adaptar ou expandir esses dados conforme seu caso de uso.
-
-📄 **Template:** [`docs/02-base-conhecimento.md`](./docs/02-base-conhecimento.md)
-
----
-
-### 3. Prompts do Agente
-
-Documente os prompts que definem o comportamento do seu agente:
-
-- **System Prompt:** Instruções gerais de comportamento e restrições
-- **Exemplos de Interação:** Cenários de uso com entrada e saída esperada
-- **Tratamento de Edge Cases:** Como o agente lida com situações limite
-
-📄 **Template:** [`docs/03-prompts.md`](./docs/03-prompts.md)
-
----
-
-### 4. Aplicação Funcional
-
-Desenvolva um **protótipo funcional** do seu agente:
-
-- Chatbot interativo (sugestão: Streamlit, Gradio ou similar)
-- Integração com LLM (via API ou modelo local)
-- Conexão com a base de conhecimento
-
-📁 **Pasta:** [`src/`](./src/)
-
----
-
-### 5. Avaliação e Métricas
-
-Descreva como você avalia a qualidade do seu agente:
-
-**Métricas Sugeridas:**
-- Precisão/assertividade das respostas
-- Taxa de respostas seguras (sem alucinações)
-- Coerência com o perfil do cliente
-
-📄 **Template:** [`docs/04-metricas.md`](./docs/04-metricas.md)
-
----
-
-### 6. Pitch
-
-Grave um **pitch de 3 minutos** (estilo elevador) apresentando:
-
-- Qual problema seu agente resolve?
-- Como ele funciona na prática?
-- Por que essa solução é inovadora?
-
-📄 **Template:** [`docs/05-pitch.md`](./docs/05-pitch.md)
-
----
-
-## Ferramentas Sugeridas
-
-Todas as ferramentas abaixo possuem versões gratuitas:
-
-| Categoria | Ferramentas |
-|-----------|-------------|
-| **LLMs** | [ChatGPT](https://chat.openai.com/), [Copilot](https://copilot.microsoft.com/), [Gemini](https://gemini.google.com/), [Claude](https://claude.ai/), [Ollama](https://ollama.ai/) |
-| **Desenvolvimento** | [Streamlit](https://streamlit.io/), [Gradio](https://www.gradio.app/), [Google Colab](https://colab.research.google.com/) |
-| **Orquestração** | [LangChain](https://www.langchain.com/), [LangFlow](https://www.langflow.org/), [CrewAI](https://www.crewai.com/) |
-| **Diagramas** | [Mermaid](https://mermaid.js.org/), [Draw.io](https://app.diagrams.net/), [Excalidraw](https://excalidraw.com/) |
-
----
-
-## Estrutura do Repositório
-
-```
-📁 lab-agente-financeiro/
-│
-├── 📄 README.md
-│
-├── 📁 data/                          # Dados mockados para o agente
-│   ├── historico_atendimento.csv     # Histórico de atendimentos (CSV)
-│   ├── perfil_investidor.json        # Perfil do cliente (JSON)
-│   ├── produtos_financeiros.json     # Produtos disponíveis (JSON)
-│   └── transacoes.csv                # Histórico de transações (CSV)
-│
-├── 📁 docs/                          # Documentação do projeto
-│   ├── 01-documentacao-agente.md     # Caso de uso e arquitetura
-│   ├── 02-base-conhecimento.md       # Estratégia de dados
-│   ├── 03-prompts.md                 # Engenharia de prompts
-│   ├── 04-metricas.md                # Avaliação e métricas
-│   └── 05-pitch.md                   # Roteiro do pitch
-│
-├── 📁 src/                           # Código da aplicação
-│   └── app.py                        # (exemplo de estrutura)
-│
-├── 📁 assets/                        # Imagens e diagramas
-│   └── ...
-│
-└── 📁 examples/                      # Referências e exemplos
-    └── README.md
+```text
+~1200 conceitos financeiros
+~8000 relações entre conceitos
 ```
 
+Os conceitos abrangem áreas como:
+
+* Finanças pessoais
+* Investimentos
+* Crédito
+* Risco
+* Macroeconomia
+* Mercado de capitais
+* Estratégias de investimento
+* Comportamento financeiro
+
+As relações permitem que o sistema realize **raciocínio financeiro explicável**.
+
+Exemplo de cadeia de raciocínio:
+
+```text
+inflação
+   ↓
+juros
+   ↓
+renda fixa
+   ↓
+estratégia de portfólio
+```
+
+Isso permite que o agente explique **cadeias econômicas completas**, algo que assistentes tradicionais não conseguem fazer.
+
 ---
 
-## Dicas Finais
+# 🎯 Objetivos do Projeto
 
-1. **Comece pelo prompt:** Um bom system prompt é a base de um agente eficaz
-2. **Use os dados mockados:** Eles garantem consistência e evitam problemas com dados sensíveis
-3. **Foque na segurança:** No setor financeiro, evitar alucinações é crítico
-4. **Teste cenários reais:** Simule perguntas que um cliente faria de verdade
-5. **Seja direto no pitch:** 3 minutos passam rápido, vá ao ponto
+O projeto busca resolver três desafios principais:
+
+### 1️⃣ Educação financeira acessível
+
+Muitas pessoas têm dificuldade em compreender conceitos financeiros importantes.
+
+O agente atua como um **mentor financeiro digital**, explicando conceitos de forma clara e adaptada ao perfil do usuário.
+
+---
+
+### 2️⃣ IA explicável
+
+Diferente de assistentes baseados apenas em IA generativa, o sistema utiliza um **grafo estruturado de conhecimento**.
+
+Isso permite:
+
+* reduzir alucinações
+* explicar o raciocínio financeiro
+* mostrar relações entre conceitos.
+
+---
+
+### 3️⃣ Educação financeira interativa
+
+O sistema utiliza **gamificação e quizzes** para tornar o aprendizado mais envolvente.
+
+Usuários podem:
+
+* testar seus conhecimentos
+* evoluir em níveis de aprendizado
+* explorar conceitos financeiros de forma interativa.
+
+---
+
+# 🧩 Funcionalidades
+
+## 🧠 Financial Brain (Knowledge Graph)
+
+O núcleo do sistema é o **Financial Brain**, um grafo de conhecimento financeiro com:
+
+```text
+≈1200 conceitos
+≈8000 relações
+```
+
+Esse grafo permite:
+
+* raciocínio econômico
+* explicações estruturadas
+* navegação entre conceitos financeiros
+* visualização de conexões entre temas.
+
+---
+
+## 📚 Educação Financeira Inteligente
+
+O agente responde perguntas como:
+
+* "O que é inflação?"
+* "Por que juros afetam investimentos?"
+* "Qual a relação entre risco e retorno?"
+
+As respostas são baseadas em conceitos armazenados na base de conhecimento, reduzindo **alucinações de IA**.
+
+---
+
+## 🎮 Quizzes e Gamificação
+
+Para tornar o aprendizado mais envolvente, o sistema inclui:
+
+* quizzes sobre conceitos financeiros
+* trilhas de aprendizado
+* desafios educacionais
+* progressão de conhecimento.
+
+Isso transforma a educação financeira em uma **experiência interativa**.
+
+---
+
+## 👥 Personalização por Perfil
+
+O agente adapta a comunicação de acordo com o usuário.
+
+Perfis suportados:
+
+```text
+Teen
+Adulto
+Idoso
+```
+
+E níveis de conhecimento:
+
+```text
+Iniciante
+Intermediário
+Avançado
+```
+
+---
+
+## 🧑‍🎓 Modo Teen (Fidelização de Jovens Clientes)
+
+O **modo Teen** foi projetado para ajudar instituições financeiras a **educar e fidelizar correntistas jovens**.
+
+Nesse modo:
+
+* conceitos financeiros são explicados de forma mais simples
+* exemplos são adaptados para o cotidiano de jovens
+* a gamificação é utilizada para incentivar aprendizado.
+
+Isso permite que bancos e fintechs **construam relacionamento com clientes desde cedo**, promovendo educação financeira responsável.
+
+---
+
+## 💰 Análise de Hábitos Financeiros
+
+O sistema pode analisar dados simples de gastos do usuário e gerar insights como:
+
+```text
+Você gastou 30% da renda em lazer.
+O recomendado geralmente é entre 10% e 20%.
+```
+
+Isso ajuda o usuário a compreender melhor seus hábitos financeiros.
+
+---
+
+## ♿ Acessibilidade e Inclusão
+
+O projeto também foi pensado com foco em **inclusão digital**.
+
+Funcionalidades planejadas incluem:
+
+* interface em **alto contraste**
+* suporte a **Libras (Língua Brasileira de Sinais)**
+* linguagem simplificada para usuários com menor letramento financeiro
+* comunicação estruturada para **usuários neurodivergentes**
+
+O objetivo é tornar a educação financeira **mais acessível para todos**.
+
+---
+
+# 🏗 Arquitetura do Sistema
+
+```mermaid
+flowchart TD
+    A[Usuário] --> B[Interface Web / Chat]
+    B --> C[LLM]
+    C --> D[Financial Brain API]
+
+    D --> E[Financial Brain Graph]
+    D --> F[Education RAG]
+    D --> G[Quiz & Gamification Engine]
+    D --> H[User Finance Analyzer]
+
+    E --> D
+    F --> D
+    G --> D
+    H --> D
+
+    D --> C
+    C --> I[Validação]
+    I --> J[Resposta ao Usuário]
+```
+
+---
+
+# ⚙ Tecnologias Utilizadas
+
+Backend:
+
+* Python
+* FastAPI
+* NetworkX
+
+Visualização do grafo:
+
+* PyVis
+
+IA conversacional:
+
+* LLM (ex: Llama 3 ou API externa)
+
+Outros componentes:
+
+* JSON Knowledge Base
+* Knowledge Graph
+* RAG educacional
+
+---
+
+# 📊 Estrutura do Projeto
+
+```text
+financial-brain/
+│
+├── data/
+│   ├── concepts.json
+│   ├── relations.json
+│   └── quizzes.json
+│
+├── core/
+│   ├── graph_engine.py
+│   ├── reasoning_engine.py
+│   ├── rag_engine.py
+│   ├── quiz_engine.py
+│   └── finance_engine.py
+│
+├── api/
+│   └── main.py
+│
+├── visual/
+│   └── visual_financial_brain.py
+│
+└── README.md
+```
+
+---
+
+# ▶️ Como Executar o Projeto
+
+Clone o repositório:
+
+```bash
+git clone https://github.com/seu-usuario/financial-brain.git
+```
+
+Instale as dependências:
+
+```bash
+pip install -r requirements.txt
+```
+
+Execute a API:
+
+```bash
+uvicorn api.main:app --reload
+```
+
+Acesse a documentação da API:
+
+```
+http://localhost:8000/docs
+```
+
+---
+
+# 📈 Possíveis Evoluções
+
+O projeto pode evoluir para incluir:
+
+* simulador macroeconômico
+* dashboard de educação financeira
+* integração com aplicativos bancários
+* trilhas completas de aprendizado financeiro
+* visualização interativa avançada do Financial Brain.
+
+---
+
+# 🤝 Contribuição
+
+Contribuições são bem-vindas!
+
+Sugestões de melhoria:
+
+* novos conceitos financeiros
+* novas relações no grafo
+* novos quizzes
+* melhorias de acessibilidade
+* melhorias no sistema de raciocínio.
+
+---
+
+# 📜 Licença
+
+Este projeto foi desenvolvido para fins educacionais e demonstração de arquitetura de IA aplicada a finanças.
+
