@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/logo_g.png" width="800"/>
+</p>
+
 
 # BIA PRO
 
