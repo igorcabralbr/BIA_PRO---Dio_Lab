@@ -221,6 +221,14 @@ O objetivo é tornar a educação financeira **mais acessível para todos**.
 
 ---
 
+# 🖥️ Interface
+
+<p align="center">
+  <img src="assets/frontend.png" width="800"/>
+</p>
+
+---
+
 # ⚙ Tecnologias Utilizadas
 
 Backend:
