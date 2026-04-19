@@ -315,10 +315,10 @@ Execute a API:
 uvicorn main:app --reload
 ```
 
-Acesse a documentação da API:
+Rode o Frontend:
 
 ```
-http://localhost:8000/docs
+/frontend/index.html
 ```
 
 ---
