@@ -300,7 +300,7 @@ BIA_PRO/
 Clone o repositório:
 
 ```bash
-git clone https://github.com/seu-usuario/financial-brain.git
+git clone https://github.com/igorcabralbr/BIA_PRO---Dio_Lab.git
 ```
 
 Instale as dependências:
